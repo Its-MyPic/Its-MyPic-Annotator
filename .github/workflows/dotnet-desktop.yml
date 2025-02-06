@@ -22,7 +22,7 @@ jobs:
         run: |
           $releasePath = "./bin/Release/net8.0-windows/publish/win-x64"
 
-          Copy-Item "releasePath/MyPic_Annotator.exe" "./MyPic_Annotator.exe" -Recurse -Force
+          Copy-Item "$releasePath/MyPic_Annotator.exe" "./MyPic_Annotator.exe" -Recurse -Force
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
