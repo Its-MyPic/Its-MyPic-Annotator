@@ -20,7 +20,7 @@ jobs:
 
       - name: pack artifact
         run: |
-          $releasePath = "./bin/Release/net8.0-windows/publish/win-x64"
+          $releasePath = "./bin/Release/net8.0-windows/win-x64/publish"
 
           Copy-Item "$releasePath/MyPic_Annotator.exe" "./MyPic_Annotator.exe" -Recurse -Force
 
