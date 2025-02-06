@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         run: |
-          dotnet publish
+          dotnet publish -a x64 -v d --no-self-contained
 
       - name: pack artifact
         run: |
