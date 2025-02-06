@@ -18,15 +18,6 @@ jobs:
         run: |
           dotnet build -c Release
 
-      - name: Generate artifact name
-        id: name
-        run: |
-          $name = "Its-MyPic-Annotator"
-          $version = "$((Get-Content ./plugin.json | ConvertFrom-Json).Version)"
-          $artifactName = "$name-$version"
-          echo "Artifact name: $artifactName"
-          echo "artifactName=$artifactName" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-
       - name: pack artifact
         run: |
           $releasePath = "./bin/Release/net8.0-windows/publish/win-x64"
@@ -36,5 +27,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.name.outputs.artifactName }}
+          name: Its-MyPic-Annotator
           path: ./MyPic_Annotator.exe
