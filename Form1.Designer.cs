@@ -49,21 +49,21 @@
             // 
             // next
             // 
-            next.Location = new Point(539, 546);
+            next.Location = new Point(512, 546);
             next.Name = "next";
-            next.Size = new Size(111, 23);
+            next.Size = new Size(138, 23);
             next.TabIndex = 2;
-            next.Text = "Next";
+            next.Text = "Next (L)";
             next.UseVisualStyleBackColor = true;
             next.Click += next_Click;
             // 
             // nextUnannotate
             // 
-            nextUnannotate.Location = new Point(539, 517);
+            nextUnannotate.Location = new Point(512, 517);
             nextUnannotate.Name = "nextUnannotate";
-            nextUnannotate.Size = new Size(111, 23);
+            nextUnannotate.Size = new Size(138, 23);
             nextUnannotate.TabIndex = 3;
-            nextUnannotate.Text = "NextUnannotate";
+            nextUnannotate.Text = "NextUnannotate (O)";
             nextUnannotate.UseVisualStyleBackColor = true;
             nextUnannotate.Click += nextUnannotate_Click;
             // 
@@ -71,9 +71,9 @@
             // 
             prevUnannotate.Location = new Point(12, 517);
             prevUnannotate.Name = "prevUnannotate";
-            prevUnannotate.Size = new Size(111, 23);
+            prevUnannotate.Size = new Size(138, 23);
             prevUnannotate.TabIndex = 5;
-            prevUnannotate.Text = "PrevUnannotate";
+            prevUnannotate.Text = "PrevUnannotate (U)";
             prevUnannotate.UseVisualStyleBackColor = true;
             prevUnannotate.Click += prevUnannotate_Click;
             // 
@@ -81,9 +81,9 @@
             // 
             prev.Location = new Point(12, 546);
             prev.Name = "prev";
-            prev.Size = new Size(111, 23);
+            prev.Size = new Size(138, 23);
             prev.TabIndex = 6;
-            prev.Text = "Prev";
+            prev.Text = "Prev (J)";
             prev.UseVisualStyleBackColor = true;
             prev.Click += prev_Click;
             // 
@@ -91,9 +91,9 @@
             // 
             save.Location = new Point(275, 517);
             save.Name = "save";
-            save.Size = new Size(111, 23);
+            save.Size = new Size(138, 23);
             save.TabIndex = 7;
-            save.Text = "Save";
+            save.Text = "Save (Enter)";
             save.UseVisualStyleBackColor = true;
             save.Click += save_Click;
             // 
@@ -101,7 +101,7 @@
             // 
             export.Location = new Point(275, 546);
             export.Name = "export";
-            export.Size = new Size(111, 23);
+            export.Size = new Size(138, 23);
             export.TabIndex = 8;
             export.Text = "Export";
             export.UseVisualStyleBackColor = true;
@@ -127,6 +127,7 @@
             Text = "Form1";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
+            KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)picture).EndInit();
             ResumeLayout(false);
         }

@@ -18,6 +18,7 @@ namespace MyPic_Annotator
         private readonly List<CheckBox> characterBox;
         int currnetIndex = 0;
         bool unsaved = false;
+        private readonly List<Keys> keys = [Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, Keys.A, Keys.S, Keys.D, Keys.F, Keys.G];
         public Form1()
         {
             InitializeComponent();
@@ -43,9 +44,10 @@ namespace MyPic_Annotator
                 int y = 401 + (i % 5) * 20;
                 CheckBox checkBox = new()
                 {
-                    Text = character[i],
+                    Text = $"{character[i]} ({keys[i].ToString()})",
                     Location = new Point(x, y),
-                    AutoSize = true
+                    AutoSize = true,
+                    TabStop = false
                 };
                 Controls.Add(checkBox);
                 characterBox.Add(checkBox);
@@ -56,6 +58,7 @@ namespace MyPic_Annotator
         {
             picture.Load($"https://mygodata.0m0.uk/images/{session}_{frame}.jpg");
         }
+
         private void LoadCurrentData()
         {
             LoadImage(data[currnetIndex].episode, data[currnetIndex].frame_start);
@@ -70,6 +73,11 @@ namespace MyPic_Annotator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            KeyPreview = true;
+            foreach (Control ctrl in Controls)
+            {
+                ctrl.TabStop = false; // 全部控制項關閉 Tab 選取
+            }
             LoadCurrentData();
         }
 
@@ -165,6 +173,28 @@ namespace MyPic_Annotator
                 {
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            for (int i = 0; i < keys.Count(); i++)
+            {
+                if (e.KeyCode == keys[i])
+                {
+                    characterBox[i].Checked = !characterBox[i].Checked;
+                }
+            }
+            switch (e.KeyCode)
+            {
+                case Keys.L:
+                    next.PerformClick(); break;
+                case Keys.J:
+                    prev.PerformClick(); break;
+                case Keys.O:
+                    nextUnannotate.PerformClick(); break;
+                case Keys.U:
+                    prevUnannotate.PerformClick(); break;
             }
         }
     }
