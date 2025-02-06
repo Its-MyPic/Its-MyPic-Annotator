@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         run: |
-          dotnet build -c Release
+          dotnet publish
 
       - name: pack artifact
         run: |
