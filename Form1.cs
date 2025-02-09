@@ -22,8 +22,8 @@ namespace MyPic_Annotator
 		private readonly List<Keys> keys = [Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, Keys.A, Keys.S, Keys.D, Keys.F, Keys.G];
 		public Form1()
 		{
-            TopMost = true;
-            InitializeComponent();
+			TopMost = true;
+			InitializeComponent();
 			if (File.Exists("data.json"))
 				data = JsonSerializer.Deserialize<List<Data>>(File.ReadAllText($"data.json")) ?? [];
 			else
@@ -58,11 +58,21 @@ namespace MyPic_Annotator
 
 		private void LoadImage()
 		{
-			var session = data[currnetIndex].episode;
+			var prefix = data[currnetIndex].season == 1 ? "" : "ave-";
+			string season;
+			if (data[currnetIndex].season == 1 && data[currnetIndex].episode < 4)
+			{
+				season = "1-3";
+			}
+			else
+			{
+				season = $"{prefix}{data[currnetIndex].episode}";
+			}
 			var frame = data[currnetIndex].frame_prefer;
-			picture.Load($"https://qwer.0m0.uk/images/{session}_{frame}.jpg");
+			Debug.WriteLine($"https://qwer.0m0.uk/images/{season}_{frame}.jpg");
+			picture.Load($"https://qwer.0m0.uk/images/{season}_{frame}.jpg");
 
-        }
+		}
 
 		private void LoadCurrentData()
 		{
@@ -91,17 +101,17 @@ namespace MyPic_Annotator
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-            KeyPreview = true;
+			KeyPreview = true;
 			foreach (Control ctrl in Controls)
 			{
 				ctrl.TabStop = false; // 全部控制項關閉 Tab 選取
 			}
 			numericUpDown1.Enabled = false;
 			LoadCurrentData();
-            TopMost = false;
-        }
+			TopMost = false;
+		}
 
-        private void save_Click(object sender, EventArgs e)
+		private void save_Click(object sender, EventArgs e)
 		{
 			int val = 0;
 			for (int i = 0; i < characterBox.Count; i++)
@@ -244,7 +254,8 @@ namespace MyPic_Annotator
 	class Data
 	{
 		public required string text { get; set; }
-		public required string episode { get; set; }
+		public required int season { get; set; }
+		public required int episode { get; set; }
 		public int frame_start { get; set; }
 		public int frame_prefer { get; set; }
 		public int frame_end { get; set; }
