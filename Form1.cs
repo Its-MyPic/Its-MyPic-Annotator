@@ -22,7 +22,8 @@ namespace MyPic_Annotator
 		private readonly List<Keys> keys = [Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, Keys.A, Keys.S, Keys.D, Keys.F, Keys.G];
 		public Form1()
 		{
-			InitializeComponent();
+            TopMost = true;
+            InitializeComponent();
 			if (File.Exists("data.json"))
 				data = JsonSerializer.Deserialize<List<Data>>(File.ReadAllText($"data.json")) ?? [];
 			else
@@ -60,7 +61,8 @@ namespace MyPic_Annotator
 			var session = data[currnetIndex].episode;
 			var frame = data[currnetIndex].frame_prefer;
 			picture.Load($"https://qwer.0m0.uk/images/{session}_{frame}.jpg");
-		}
+
+        }
 
 		private void LoadCurrentData()
 		{
@@ -89,16 +91,17 @@ namespace MyPic_Annotator
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			KeyPreview = true;
+            KeyPreview = true;
 			foreach (Control ctrl in Controls)
 			{
 				ctrl.TabStop = false; // 全部控制項關閉 Tab 選取
 			}
 			numericUpDown1.Enabled = false;
 			LoadCurrentData();
-		}
+            TopMost = false;
+        }
 
-		private void save_Click(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
 		{
 			int val = 0;
 			for (int i = 0; i < characterBox.Count; i++)
