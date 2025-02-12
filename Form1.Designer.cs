@@ -99,7 +99,7 @@
             save.Name = "save";
             save.Size = new Size(138, 23);
             save.TabIndex = 7;
-            save.Text = "Save (Enter)";
+            save.Text = "Save (K)";
             save.UseVisualStyleBackColor = true;
             save.Click += save_Click;
             // 

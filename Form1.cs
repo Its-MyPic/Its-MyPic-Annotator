@@ -238,7 +238,7 @@ namespace MyPic_Annotator
                     numericUpDown1.UpButton(); break;
                 case Keys.Oemcomma:
                     numericUpDown1.DownButton(); break;
-                case Keys.Enter:
+                case Keys.K:
                     save.PerformClick(); break;
                 default:
                     var idx = keys.IndexOf(e.KeyCode);
