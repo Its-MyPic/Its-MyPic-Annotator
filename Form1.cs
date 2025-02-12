@@ -247,9 +247,11 @@ namespace MyPic_Annotator
 				case Keys.OemPeriod:
 					if (trackBar1.Value < trackBar1.Maximum)
 						trackBar1.Value += 1;
+					break;
 				case Keys.Oemcomma:
 					if (trackBar1.Value > trackBar1.Minimum)
 						trackBar1.Value -= 1;
+					break;
 				case Keys.K:
 					save.PerformClick(); break;
 				default:
