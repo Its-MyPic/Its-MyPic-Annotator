@@ -1,26 +1,26 @@
 ﻿namespace MyPic_Annotator
 {
-    partial class Form1
-    {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class Form1
+	{
+		/// <summary>
+		///  Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		///  Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
         /// <summary>
         ///  Required method for Designer support - do not modify
@@ -38,10 +38,10 @@
             subtitleLabel = new Label();
             frameLabel = new Label();
             anotateStatus = new Label();
-            numericUpDown1 = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)picture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            SuspendLayout();
+			trackBar1 = new TrackBar();
+			((System.ComponentModel.ISupportInitialize)picture).BeginInit();
+			((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+			SuspendLayout();
             // 
             // picture
             // 
@@ -99,7 +99,7 @@
             save.Name = "save";
             save.Size = new Size(138, 23);
             save.TabIndex = 7;
-            save.Text = "Save (K)";
+            save.Text = "Save (Enter)";
             save.UseVisualStyleBackColor = true;
             save.Click += save_Click;
             // 
@@ -183,18 +183,18 @@
             PerformLayout();
         }
 
-        #endregion
+		#endregion
 
-        private PictureBox picture;
-        private Button next;
-        private Button nextUnannotate;
-        private Button prevUnannotate;
-        private Button prev;
-        private Button save;
-        private Button export;
-        private Label subtitleLabel;
-        private Label frameLabel;
-        private Label anotateStatus;
-        private NumericUpDown numericUpDown1;
-    }
+		private PictureBox picture;
+		private Button next;
+		private Button nextUnannotate;
+		private Button prevUnannotate;
+		private Button prev;
+		private Button save;
+		private Button export;
+		private Label subtitleLabel;
+		private Label frameLabel;
+		private Label anotateStatus;
+		private TrackBar trackBar1;
+	}
 }
