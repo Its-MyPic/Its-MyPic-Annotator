@@ -100,7 +100,7 @@ namespace MyPic_Annotator
 			trackBar1.Minimum = data[currnetIndex].frame_start;
 			trackBar1.Maximum = data[currnetIndex].frame_end;
 			trackBar1.Value = data[currnetIndex].frame_prefer;
-			if (data[currnetIndex].character != 0)
+			if (data[currnetIndex].character != -1)
 			{
 				for (int i = 0; i < characterBox.Count; i++)
 				{
@@ -232,19 +232,19 @@ namespace MyPic_Annotator
 			}
 		}
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.L:
-                    next.PerformClick(); break;
-                case Keys.J:
-                    prev.PerformClick(); break;
-                case Keys.O:
-                    nextUnannotate.PerformClick(); break;
-                case Keys.U:
-                    prevUnannotate.PerformClick(); break;
-                case Keys.OemPeriod:
+		private void Form1_KeyDown(object sender, KeyEventArgs e)
+		{
+			switch (e.KeyCode)
+			{
+				case Keys.L:
+					next.PerformClick(); break;
+				case Keys.J:
+					prev.PerformClick(); break;
+				case Keys.O:
+					nextUnannotate.PerformClick(); break;
+				case Keys.U:
+					prevUnannotate.PerformClick(); break;
+				case Keys.OemPeriod:
 					if (trackBar1.Value < trackBar1.Maximum)
 						trackBar1.Value += 1;
 				case Keys.Oemcomma:
@@ -252,13 +252,13 @@ namespace MyPic_Annotator
 						trackBar1.Value -= 1;
 				case Keys.K:
 					save.PerformClick(); break;
-                default:
-                    var idx = keys.IndexOf(e.KeyCode);
-                    if (idx != -1)
-                        characterBox[idx].Checked = !characterBox[idx].Checked;
-                    break;
-            }
-        }
+				default:
+					var idx = keys.IndexOf(e.KeyCode);
+					if (idx != -1)
+						characterBox[idx].Checked = !characterBox[idx].Checked;
+					break;
+			}
+		}
 
 		private void trackBar1_ValueChanged(object sender, EventArgs e)
 		{
