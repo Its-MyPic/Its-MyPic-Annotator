@@ -56,20 +56,9 @@ namespace MyPic_Annotator
 
 		private void LoadImage()
 		{
-			var prefix = data[currnetIndex].season == 1 ? "" : "ave-";
-			string season;
-			if (data[currnetIndex].season == 1 && data[currnetIndex].episode < 4)
-			{
-				season = "1-3";
-			}
-			else
-			{
-				season = $"{prefix}{data[currnetIndex].episode}";
-			}
-			var frame = data[currnetIndex].frame_prefer;
-			Debug.WriteLine($"https://qwer.0m0.uk/images/{season}_{frame}.webp");
+			Debug.WriteLine($"https://qwer.0m0.uk/images/{data[currnetIndex].season}/{data[currnetIndex].episode}/{data[currnetIndex].frame_prefer}.webp");
 			HttpResponseMessage result;
-			using (var task = Task.Run(() => client.GetAsync($"https://qwer.0m0.uk/images/{season}_{frame}.webp")))
+			using (var task = Task.Run(() => client.GetAsync($"https://qwer.0m0.uk/images/{data[currnetIndex].season}/{data[currnetIndex].episode}/{data[currnetIndex].frame_prefer}.webp")))
 			{
 				task.Wait();
 				result = task.Result;
@@ -96,6 +85,7 @@ namespace MyPic_Annotator
 				data[currnetIndex].frame_prefer = (data[currnetIndex].frame_start + data[currnetIndex].frame_end) / 2;
 			}
 			LoadImage();
+			numericUpDown1.Value = currnetIndex;
 			subtitleLabel.Text = data[currnetIndex].text;
 			trackBar1.Minimum = data[currnetIndex].frame_start;
 			trackBar1.Maximum = data[currnetIndex].frame_end;
@@ -138,7 +128,7 @@ namespace MyPic_Annotator
 				}
 			}
 			data[currnetIndex].character = val;
-			if (val == 0)
+			if (val == -1)
 			{
 				anotateStatus.Text = "Unannotated";
 				anotateStatus.ForeColor = Color.Red;
@@ -166,7 +156,7 @@ namespace MyPic_Annotator
 			while (currnetIndex < data.Count - 1)
 			{
 				currnetIndex++;
-				if (data[currnetIndex].character == 0)
+				if (data[currnetIndex].character == -1)
 				{
 					LoadCurrentData();
 					return;
@@ -190,7 +180,7 @@ namespace MyPic_Annotator
 			while (currnetIndex > 0)
 			{
 				currnetIndex--;
-				if (data[currnetIndex].character == 0)
+				if (data[currnetIndex].character == -1)
 				{
 					LoadCurrentData();
 					return;
@@ -266,6 +256,13 @@ namespace MyPic_Annotator
 		{
 			unsaved = true;
 			data[currnetIndex].frame_prefer = Convert.ToInt32(trackBar1.Value);
+			Debug.WriteLine(trackBar1.Value);
+			LoadCurrentData();
+		}
+
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+		{
+			currnetIndex = Convert.ToInt32(numericUpDown1.Value);
 			Debug.WriteLine(trackBar1.Value);
 			LoadCurrentData();
 		}

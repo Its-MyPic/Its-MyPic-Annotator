@@ -39,8 +39,10 @@
 			frameLabel = new Label();
 			anotateStatus = new Label();
 			trackBar1 = new TrackBar();
+			numericUpDown1 = new NumericUpDown();
 			((System.ComponentModel.ISupportInitialize)picture).BeginInit();
 			((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
 			SuspendLayout();
 			// 
 			// picture
@@ -151,12 +153,22 @@
 			trackBar1.TabIndex = 0;
 			trackBar1.ValueChanged += trackBar1_ValueChanged;
 			// 
+			// numericUpDown1
+			// 
+			numericUpDown1.Location = new Point(530, 460);
+			numericUpDown1.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+			numericUpDown1.Name = "numericUpDown1";
+			numericUpDown1.Size = new Size(120, 23);
+			numericUpDown1.TabIndex = 14;
+			numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			AutoSize = true;
 			ClientSize = new Size(662, 581);
+			Controls.Add(numericUpDown1);
 			Controls.Add(trackBar1);
 			Controls.Add(anotateStatus);
 			Controls.Add(frameLabel);
@@ -178,6 +190,7 @@
 			KeyDown += Form1_KeyDown;
 			((System.ComponentModel.ISupportInitialize)picture).EndInit();
 			((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+			((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -195,5 +208,6 @@
 		private Label frameLabel;
 		private Label anotateStatus;
 		private TrackBar trackBar1;
+		private NumericUpDown numericUpDown1;
 	}
 }
